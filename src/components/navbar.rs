@@ -2,8 +2,10 @@ use crate::utils::local_storage_handler::set_theme;
 use leptos::prelude::*;
 #[component]
 pub fn navbar(is_light: ReadSignal<bool>, set_is_light: WriteSignal<bool>) -> impl IntoView {
+    let theme_suffix = if is_light.get() { "" } else { "-dark" };
+
     view! {
-        <nav style="display: flex; justify-content: center; flex: 1">
+        <nav class=format!("nav{}", theme_suffix) style="display: flex; justify-content: center; flex: 1">
             <div class="spacer"></div>
             <div class="theme-switch">
                 <input type="checkbox" id="theme-checkbox"
