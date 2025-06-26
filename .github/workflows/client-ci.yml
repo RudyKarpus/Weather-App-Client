@@ -23,6 +23,10 @@ jobs:
           toolchain: ${{ matrix.rust-version }}
           profile: minimal
           override: true
+      - name: Create .env file
+        run: |
+          cat > .env << EOF
+          EOF
 
       - name: Build (ignore warnings)
         run: cargo build --release
