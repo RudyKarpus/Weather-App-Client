@@ -26,9 +26,7 @@ jobs:
 
       - name: Build (ignore warnings)
         run: cargo build --release
-        working-directory: model
         env:
           RUSTFLAGS: "--cap-lints allow"
       - name: cargo test
-        steps:
-          - run: RUSTFLAGS="-A unsafe-op-in-unsafe-fn" cargo test
+        run: RUSTFLAGS="-A unsafe-op-in-unsafe-fn" cargo test
