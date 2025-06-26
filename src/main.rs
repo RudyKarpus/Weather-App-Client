@@ -8,12 +8,8 @@ use web_sys::*;
 mod pages;
 use crate::pages::home::HomePage;
 
-/// TODO: Replace with env String
-const BACKEND: &'static str = "http://localhost:8000";
-
 #[component]
 pub fn App() -> impl IntoView {
-
     view! {
         <Router>
             <Routes fallback=|| view! { NotFound }>
