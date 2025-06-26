@@ -1,11 +1,12 @@
 #![feature(iter_intersperse)]
-
 use leptos::prelude::*;
 use leptos_router::{components::*, path};
 #[allow(unused_imports, reason = "Fixes trunk error")]
 use web_sys::*;
 
+mod components;
 mod pages;
+mod utils;
 use crate::pages::home::HomePage;
 
 #[component]

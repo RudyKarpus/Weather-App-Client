@@ -12,5 +12,7 @@ web-sys = { version = "0.3.77", features = ["Window", "Crypto", "Storage", "UrlS
 console_error_panic_hook = "0.1.7"
 console_log = { version = "1.0.0", features = ["color"] }
 log = "0.4.26"
+leptos_darkmode = "0.3"
+
 [build-dependencies]
 dotenv = "0.15.0"
