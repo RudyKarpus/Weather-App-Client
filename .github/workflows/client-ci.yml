@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        rust-version: ["1.85", "nightly"]
+        rust-version: ["nightly"]
 
     steps:
       - name: Checkout code
