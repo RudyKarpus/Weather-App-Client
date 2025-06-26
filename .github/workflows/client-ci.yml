@@ -1,0 +1,34 @@
+name: "Client CI Pipeline"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rust-version: ["1.85"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: ${{ matrix.rust-version }}
+          profile: minimal
+          override: true
+
+      - name: Build (ignore warnings)
+        run: cargo build --release
+        working-directory: model
+        env:
+          RUSTFLAGS: "--cap-lints allow"
+      - name: cargo test
+        steps:
+          - run: RUSTFLAGS="-A unsafe-op-in-unsafe-fn" cargo test
