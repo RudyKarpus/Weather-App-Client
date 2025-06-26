@@ -18,6 +18,62 @@ body {
     height: 100vh;
 }
 
+/* Text */
+
+.text-title {
+    font-size: 26px;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    place-items: start center;
+    margin-left: 20px;
+}
+
+.text-title-dark {
+    font-size: 26px;
+    color: #dae2f9;
+    font-family: 'Roboto', sans-serif;
+    place-items: start center;
+    margin-left: 20px;
+}
+/* Buttons */
+
+.button {
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.button:hover,
+.button.active {
+  border: 2px solid #d6e3ff;
+  background: #d6e3ff;
+  color: #284777;
+}
+
+.button-dark {
+  background: transparent;
+  border: 2px solid #dae2f9;
+  color: #dae2f9;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.button-dark:hover,
+.button-dark.active {
+  border: 2px solid #284777;
+  background: #284777;
+  color: #d6e3ff;
+}
+
+
 /* Nav bar*/
 .nav {
   display: flex;
