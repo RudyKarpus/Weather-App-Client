@@ -18,6 +18,8 @@ body {
     height: 100vh;
 }
 
+#map { height: 70vh; width: 70vw;}
+
 /* Text */
 
 .text-title {
