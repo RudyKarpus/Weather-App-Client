@@ -1,0 +1,16 @@
+[package]
+name = "client"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+leptos = { version = "0.8.0", features = ["csr", "nightly"] }
+leptos_router = { version = "0.8" }
+leptos_meta = { version = "0.8" }
+wasm-bindgen = "0.2.93"
+web-sys = { version = "0.3.77", features = ["Window", "Crypto", "Storage", "UrlSearchParams"] }
+console_error_panic_hook = "0.1.7"
+console_log = { version = "1.0.0", features = ["color"] }
+log = "0.4.26"
+[build-dependencies]
+dotenv = "0.15.0"
