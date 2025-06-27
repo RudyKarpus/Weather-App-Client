@@ -4,10 +4,13 @@ use leptos_router::{components::*, path};
 #[allow(unused_imports, reason = "Fixes trunk error")]
 use web_sys::*;
 
+mod auth;
 mod components;
 mod pages;
 mod utils;
 use crate::pages::home::HomePage;
+#[allow(clippy::redundant_static_lifetimes, reason = "Will be changed")]
+const BACKEND: &'static str = "http://localhost:8000";
 
 #[component]
 pub fn App() -> impl IntoView {
