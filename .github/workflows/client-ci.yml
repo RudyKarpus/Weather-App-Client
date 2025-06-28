@@ -26,6 +26,8 @@ jobs:
       - name: Create .env file
         run: |
           cat > .env << EOF
+          PUBLIC_API_URL=temp
+
           EOF
 
       - name: Build (ignore warnings)
