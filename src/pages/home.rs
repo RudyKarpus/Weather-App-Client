@@ -19,6 +19,21 @@ pub struct DayData {
     pub estimated_energy: f64,
 }
 
+#[derive(Debug, Default, Deserialize, Clone)]
+pub struct WeeklySummaryData {
+    pub average_pressure: f64,
+    pub average_sunshine_hours: f64,
+    pub min_temperature: f64,
+    pub max_temperature: f64,
+    pub weekly_summary: String,
+}
+
+async fn get_weekly_summary_data(lat_lng: (f64, f64)) -> anyhow::Result<WeeklySummaryData> {
+    let endpoint = format!("/weather/weekly/summary/{}/{}/", lat_lng.0, lat_lng.1);
+
+    return send_get_request(&endpoint).await;
+}
+
 async fn get_weekly_data(lat_lng: (f64, f64)) -> anyhow::Result<Vec<DayData>> {
     let endpoint = format!("/weather/weekly/data/{}/{}/", lat_lng.0, lat_lng.1);
 
@@ -31,6 +46,8 @@ pub fn HomePage() -> impl IntoView {
     let (is_forecast, set_is_forecast) = signal(true);
     let (location, set_location) = signal::<(f64, f64)>((0.0, 0.0));
     let (day_data, set_day_data) = signal::<Vec<DayData>>(vec![]);
+    let (weekly_summary_data, set_weekly_summary_data) =
+        signal::<WeeklySummaryData>(WeeklySummaryData::default());
     let (lat_input, set_lat_input) = signal(0.0);
     let (lng_input, set_lng_input) = signal(0.0);
     let (error_lat, set_error_lat) = signal(None::<String>);
@@ -63,7 +80,17 @@ pub fn HomePage() -> impl IntoView {
         Some(Err(err)) => {
             log::log!(Level::Error, "{err}");
         }
-        _ => log::info!("Receivecfd"),
+        _ => log::info!("WeeklyData: Didn't receiveced"),
+    });
+
+    //getting weekly data
+    let summary_data = LocalResource::new(move || get_weekly_summary_data(location.get()));
+    Effect::new(move || match &*summary_data.read() {
+        Some(Ok(res)) => set_weekly_summary_data(res.clone()),
+        Some(Err(err)) => {
+            log::log!(Level::Error, "{err}");
+        }
+        _ => log::info!("SummaryData: Didn't Receiveced"),
     });
 
     move || {
@@ -119,7 +146,7 @@ pub fn HomePage() -> impl IntoView {
                                         "Find"
                                     </button>
                                 </div>
-                                <Forecast day_data=day_data is_light=is_light/>
+                                <Forecast day_data=day_data weekly_data=weekly_summary_data is_light=is_light/>
                             }
                         >
                             <Map set_is_forecast=set_is_forecast set_location=set_location/>
