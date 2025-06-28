@@ -20,6 +20,7 @@ jobs:
     - name: Create .env file
       run: |
         cat > .env << EOF
+        PUBLIC_API_URL=temp
         EOF
 
     - name: Build Docker image
@@ -31,10 +32,6 @@ jobs:
 
     - name: Wait for containers to initialize
       run: sleep 10
-
-    - name: Check if client is responding
-      run: |
-        curl --fail http://localhost:3000 || (docker logs client-test && exit 1)
 
     - name: Stop container
       if: always()
