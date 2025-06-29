@@ -1,3 +1,5 @@
 #!/bin/bash
 
-trunk serve --port 8080 --address 0.0.0.0
+trunk build --release
+
+simple-http-server dist --port 8080 --host 0.0.0.0
