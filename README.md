@@ -1,6 +1,6 @@
 # Weather App server
 **Rust frontend, build using rust-leptos, for weather app deployed on azure**<br>
-**[Here](https://weatherupapp-efbkesfae4ggcmeu.uksouth-01.azurewebsites.net/)**
+**[Here](https://weatherupapp-efbkesfae4ggcmeu.uksouth-01.azurewebsites.net/)**<br>
 **[Server Repo](https://github.com/RudyKarpus/Weather-App-Server)**
 
 
