@@ -1,3 +1,3 @@
 #!/bin/bash
 
-trunk serve --address 0.0.0.0
+trunk serve --port 8080 --address 0.0.0.0
