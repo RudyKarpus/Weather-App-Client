@@ -28,4 +28,6 @@ RUN chmod +x /entrypoint.sh
 
 RUN sed -i 's/\r$//' /entrypoint.sh
 
+EXPOSE 8080
+
 ENTRYPOINT ["/entrypoint.sh"]
