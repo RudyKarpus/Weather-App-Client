@@ -21,7 +21,7 @@ COPY index.html index.html
 COPY public public
 RUN trunk build
 CMD rm .env
-RUN cargo install simple-http-server
+RUN cargo install miniserve
 
 COPY entrypoint.sh /entrypoint.sh
 
