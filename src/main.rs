@@ -8,7 +8,6 @@ mod components;
 mod pages;
 mod utils;
 use crate::pages::home::HomePage;
-const BACKEND: &str = env!("PUBLIC_API_URL");
 
 #[component]
 pub fn App() -> impl IntoView {
